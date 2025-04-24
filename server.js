@@ -1,6 +1,7 @@
 // Import the built-in http module to create a server
 const http = require("http");
 const mongoose = require("mongoose");
+require('dotenv').config();
 const bodyParser = require("body-parser");
 const userRoutes = require("./routes/datails.routes");
 const rateLimit = require("express-rate-limit");
@@ -32,6 +33,6 @@ module.exports = app;
 app.use("/", userRoutes);
 
 // Start the server and listen on the specified port
-app.listen(port, () => {
+app.listen(process.env.PORT?process.env.PORT:port, () => {
   console.log(`Server running on http://localhost:${port}`);
 });
